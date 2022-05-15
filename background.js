@@ -1,28 +1,12 @@
-const customisationRules=
-[
-    {
-        name:"TVA and Journal montreal adblocker message and scroll",
-        active:true,
-        urls:[
-            "https://www.tvanouvelles.ca/",
-            "https://www.journaldemontreal.com/"
-        ],
-        remove:[
-            {
-                description:"Removing the annoying pannel",
-                querySelector:".popup-adblocker"
-            }
-            ],
-        styles:[
-            {
-                description:"Removing the blocked scroll",
-                querySelector:"body",
-                cssRule:"overflow",
-                cssValue:"auto"
-            }
-        ]
-    }
-];
+let customisationRules=[];
+url = chrome.runtime.getURL('rules.json');
+
+fetch(url)
+.then((response) => response.json())
+.then((json) =>{
+    customisationRules=json;
+    console.log("Rules successfully loaded.")
+});
 
 chrome.runtime.onInstalled.addListener(() => {
     console.clear();

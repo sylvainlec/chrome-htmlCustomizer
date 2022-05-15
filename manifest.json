@@ -18,5 +18,12 @@
       "16": "icons/cleaner16.png",
       "48": "icons/cleaner48.png",
      "128": "icons/cleaner128.png"
-    }
+    },
+    "web_accessible_resources": [
+      {
+          "resources": [ "rules.json" ],
+          "matches": ["<all_urls>"],
+          "extension_ids": []
+      }
+  ]
   }
