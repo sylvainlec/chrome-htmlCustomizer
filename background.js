@@ -13,6 +13,12 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log(`Installation successfull.`);
 });
 
+chrome.action.onClicked.addListener(function(tab) {
+    const newURL = "options.html";
+    chrome.tabs.create({ url: newURL });
+    // chrome.action.setTitle({tabId: tab.id, title: "You are on tab:" + tab.id});
+  });
+
 chrome.tabs.onUpdated.addListener( function (_, changeInfo, tab) {
     if (changeInfo.status == 'complete' && tab.active) {
         const rulesToApply=customisationRules.filter(

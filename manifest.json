@@ -1,6 +1,8 @@
 {
     "name": "Annoying pannel remover",
-    "action": {},
+    "action": {
+        "default_title": "Click to edit the configuration"
+    },
     "manifest_version": 3,
     "version": "1.0",
     "description": "Remove annoying parts from some html websites",
@@ -18,12 +20,5 @@
       "16": "icons/cleaner16.png",
       "48": "icons/cleaner48.png",
      "128": "icons/cleaner128.png"
-    },
-    "web_accessible_resources": [
-      {
-          "resources": [ "rules.json" ],
-          "matches": ["<all_urls>"],
-          "extension_ids": []
-      }
-  ]
+    }
   }
