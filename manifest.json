@@ -3,13 +3,19 @@
     "action": {
         "default_title": "Click to edit the configuration"
     },
+    "options_ui": {
+      "page": "options.html",
+      "open_in_tab": true
+    },
     "manifest_version": 3,
     "version": "1.0",
     "description": "Remove annoying parts from some html websites",
     "permissions": [
         "activeTab",
         "tabs",
-        "scripting"],
+        "scripting",
+        "storage"
+    ],
     "background": {
         "service_worker": "background.js"
       },
