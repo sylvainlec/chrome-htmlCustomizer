@@ -7,13 +7,13 @@
             "https://www.journaldemontreal.com/",
             "https://www.24heures.ca/"
         ],
-        "remove":[
+        "removeBySelector":[
             {
                 "description":"Removing the annoying pannel",
                 "querySelector":".popup-adblocker"
             }
             ],
-        "styles":[
+        "changeCssBySelector":[
             {
                 "description":"Removing the blocked scroll",
                 "querySelector":"body",

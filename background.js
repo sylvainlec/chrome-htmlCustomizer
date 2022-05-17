@@ -43,17 +43,18 @@ chrome.tabs.onUpdated.addListener( function (_, changeInfo, tab) {
   })
 
 function applyWebsiteModifications(rule){
-    function removeElementBySelector(removeRule){
-        document.querySelector(removeRule.querySelector).remove();
-        console.log(`Removing element ${removeRule.querySelector} done...`); 
-    }
-    function changeCssStylingBySelector(styleRule){
-        document.querySelector(styleRule.querySelector).style[styleRule.cssRule]=styleRule.cssValue;
-        console.log(`Css ${styleRule.cssRule} set to ${styleRule.cssValue} for element ${styleRule.querySelector}...`); 
-    }
+    [
+        function removeBySelector(removeRule){
+            document.querySelector(removeRule.querySelector).remove();
+            console.log(`Removing element ${removeRule.querySelector} done...`); 
+        },
+        function changeCssBySelector(styleRule){
+            document.querySelector(styleRule.querySelector).style[styleRule.cssRule]=styleRule.cssValue;
+            console.log(`Css ${styleRule.cssRule} set to ${styleRule.cssValue} for element ${styleRule.querySelector}...`); 
+        }
+    ].map(func=>{
+        rule[func.name].map(rule=>func(rule));
+    });
 
-    rule.remove.map(r=>removeElementBySelector(r));
-    rule.styles.map(s=>changeCssStylingBySelector(s));
-
-    console.log("Cleaning complete!");
+    console.log(`Cleaning complete for ${rule.name}!`);
 }
