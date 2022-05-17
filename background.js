@@ -51,9 +51,25 @@ function applyWebsiteModifications(rule){
         function changeCssBySelector(styleRule){
             document.querySelector(styleRule.querySelector).style[styleRule.cssRule]=styleRule.cssValue;
             console.log(`Css ${styleRule.cssRule} set to ${styleRule.cssValue} for element ${styleRule.querySelector}...`); 
+        },
+        function removeByInnerText(innerTextRule){
+            const elements=Array.from(document.querySelectorAll(innerTextRule.querySelector));
+            const foundElement=elements.find(el=>el.innerText.startsWith(innerTextRule.innerText));
+ 
+                const offset=innerTextRule.depthOffset||0;
+                let realTarget=foundElement;
+                for(let depthOffset=0;depthOffset<offset;depthOffset++){
+                    realTarget=realTarget.parentElement||null;
+                }
+                if(realTarget){
+                    realTarget.remove();
+                }
+            console.log(`Removing element ${innerTextRule.querySelector} with inner text ${innerTextRule.innerText} done...`); 
         }
     ].map(func=>{
-        rule[func.name].map(rule=>func(rule));
+        if (Array.isArray(rule[func.name])) {
+            rule[func.name].map(rule=>func(rule));
+        }
     });
 
     console.log(`Cleaning complete for ${rule.name}!`);

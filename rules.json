@@ -21,5 +21,20 @@
                 "cssValue":"auto"
             }
         ]
+    },
+    {
+        "name":"Flightradar adblocker bottom message",
+        "active":true,
+        "urls":[
+            "https://www.flightradar24.com/"
+        ],
+        "removeByInnerText":[
+            {
+                "description":"Removing the annoying bottom pannel",
+                "querySelector":"div",
+                "innerText":"You are seeing this message because ad or script blocking software is interfering with this page",
+                "depthOffset":0
+            }
+        ]
     }
 ]
